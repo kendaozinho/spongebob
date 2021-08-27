@@ -1,0 +1,26 @@
+
+  
+spring:
+  datasource:
+    url: jdbc:${SPRING_DATASOURCE_ID:postgresql}://${SPRING_DATASOURCE_HOST:localhost}:${SPRING_DATASOURCE_PORT:5432}/${SPRING_DATASOURCE_DATABASE:spongebob}
+    username: ${SPRING_DATASOURCE_USERNAME:usr_spongebob}
+    password: ${SPRING_DATASOURCE_PASSWORD:12345}
+    driver-class-name: ${SPRING_DATASOURCE_DRIVER_CLASS_NAME:org.postgresql.Driver}
+  jpa:
+    show-sql: false
+    hibernate:
+      ddl-auto: none
+    generate-ddl: false
+  flyway:
+    enabled: ${SPRING_FLYWAY_ENABLED:true}
+    url: jdbc:${SPRING_DATASOURCE_ID:postgresql}://${SPRING_DATASOURCE_HOST:localhost}:${SPRING_DATASOURCE_PORT:5432}/${SPRING_DATASOURCE_DATABASE:spongebob}
+    user: ${SPRING_DATASOURCE_USERNAME:usr_spongebob}
+    password: ${SPRING_DATASOURCE_PASSWORD:12345}
+    baseline-on-migrate: true
+  application:
+    env: ${SPRING_APPLICATION_ENV:DEVELOPMENT}
+    jwt:
+      secret-key: ${SPRING_APPLICATION_JWT_SECRET_KEY:11111111-2222-3333-4444-555555555555}
+logging:
+  level:
+    root: ${LOGGING_LEVEL_ROOT:INFO}
