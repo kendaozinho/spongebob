@@ -7,5 +7,5 @@ import com.luizalabs.spongebob.domain.exception.NotFoundException;
 import java.util.UUID;
 
 public interface GetCustomerByIdInteractor {
-  Customer execute(UUID id, Boolean showProducts) throws NotFoundException, InternalServerErrorException;
+    Customer execute(UUID id, Boolean showProducts) throws NotFoundException, InternalServerErrorException;
 }

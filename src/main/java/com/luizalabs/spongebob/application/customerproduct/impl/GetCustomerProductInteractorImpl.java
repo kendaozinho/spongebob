@@ -9,14 +9,14 @@ import java.util.UUID;
 
 @Service
 public class GetCustomerProductInteractorImpl implements GetCustomerProductInteractor {
-  private final GetCustomerProductByIdGateway getCustomerProductByIdGateway;
+    private final GetCustomerProductByIdGateway getCustomerProductByIdGateway;
 
-  public GetCustomerProductInteractorImpl(GetCustomerProductByIdGateway getCustomerProductByIdGateway) {
-    this.getCustomerProductByIdGateway = getCustomerProductByIdGateway;
-  }
+    public GetCustomerProductInteractorImpl(GetCustomerProductByIdGateway getCustomerProductByIdGateway) {
+        this.getCustomerProductByIdGateway = getCustomerProductByIdGateway;
+    }
 
-  @Override
-  public CustomerProduct execute(UUID customerId, UUID productId) {
-    return this.getCustomerProductByIdGateway.getOneById(customerId, productId);
-  }
+    @Override
+    public CustomerProduct execute(UUID customerId, UUID productId) {
+        return this.getCustomerProductByIdGateway.getOneById(customerId, productId);
+    }
 }

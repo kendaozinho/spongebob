@@ -9,16 +9,16 @@ import java.util.UUID;
 
 @Service
 public class UpdateCustomerInteractorImpl implements UpdateCustomerInteractor {
-  private final UpdateCustomerGateway updateCustomerGateway;
+    private final UpdateCustomerGateway updateCustomerGateway;
 
-  public UpdateCustomerInteractorImpl(
-      UpdateCustomerGateway updateCustomerGateway
-  ) {
-    this.updateCustomerGateway = updateCustomerGateway;
-  }
+    public UpdateCustomerInteractorImpl(
+            UpdateCustomerGateway updateCustomerGateway
+    ) {
+        this.updateCustomerGateway = updateCustomerGateway;
+    }
 
-  @Override
-  public Customer execute(UUID id, Customer request) {
-    return this.updateCustomerGateway.update(id, request);
-  }
+    @Override
+    public Customer execute(UUID id, Customer request) {
+        return this.updateCustomerGateway.update(id, request);
+    }
 }

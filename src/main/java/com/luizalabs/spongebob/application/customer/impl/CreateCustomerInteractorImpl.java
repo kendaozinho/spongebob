@@ -7,14 +7,14 @@ import org.springframework.stereotype.Service;
 
 @Service
 public class CreateCustomerInteractorImpl implements CreateCustomerInteractor {
-  private final CreateCustomerGateway createCustomerGateway;
+    private final CreateCustomerGateway createCustomerGateway;
 
-  public CreateCustomerInteractorImpl(CreateCustomerGateway createCustomerGateway) {
-    this.createCustomerGateway = createCustomerGateway;
-  }
+    public CreateCustomerInteractorImpl(CreateCustomerGateway createCustomerGateway) {
+        this.createCustomerGateway = createCustomerGateway;
+    }
 
-  @Override
-  public Customer execute(Customer request) {
-    return this.createCustomerGateway.create(request);
-  }
+    @Override
+    public Customer execute(Customer request) {
+        return this.createCustomerGateway.create(request);
+    }
 }

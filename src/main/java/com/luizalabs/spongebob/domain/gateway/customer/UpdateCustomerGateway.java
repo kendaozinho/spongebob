@@ -8,5 +8,5 @@ import com.luizalabs.spongebob.domain.exception.NotFoundException;
 import java.util.UUID;
 
 public interface UpdateCustomerGateway {
-  Customer update(UUID id, Customer request) throws NotFoundException, ConflictException, InternalServerErrorException;
+    Customer update(UUID id, Customer request) throws NotFoundException, ConflictException, InternalServerErrorException;
 }

@@ -7,5 +7,5 @@ import com.luizalabs.spongebob.domain.exception.NotFoundException;
 import java.util.ArrayList;
 
 public interface GetCustomersByNameGateway {
-  ArrayList<Customer> getAllByName(String name, Integer pageNumber, Integer pageSize) throws NotFoundException, InternalServerErrorException;
+    ArrayList<Customer> getAllByName(String name, Integer pageNumber, Integer pageSize) throws NotFoundException, InternalServerErrorException;
 }

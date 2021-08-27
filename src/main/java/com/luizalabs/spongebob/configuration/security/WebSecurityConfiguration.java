@@ -18,71 +18,71 @@ import java.util.UUID;
 @Configuration
 @EnableWebSecurity
 public class WebSecurityConfiguration extends WebSecurityConfigurerAdapter {
-  private final UUID jwtSecretKey;
-  private final ObjectMapper mapper;
+    private final UUID jwtSecretKey;
+    private final ObjectMapper mapper;
 
-  public WebSecurityConfiguration(
-      @Value("${spring.application.jwt.secret-key}") UUID jwtSecretKey,
-      ObjectMapper mapper
-  ) {
-    this.jwtSecretKey = jwtSecretKey;
-    this.mapper = mapper;
-  }
+    public WebSecurityConfiguration(
+            @Value("${spring.application.jwt.secret-key}") UUID jwtSecretKey,
+            ObjectMapper mapper
+    ) {
+        this.jwtSecretKey = jwtSecretKey;
+        this.mapper = mapper;
+    }
 
-  @Override
-  public void configure(HttpSecurity http) throws Exception {
-    http
-        .authorizeRequests()
-        .anyRequest()
-        .authenticated()
-        .and()
-        .csrf()
-        .disable()
-        .sessionManagement()
-        .sessionCreationPolicy(SessionCreationPolicy.STATELESS)
-        .and()
-        .addFilterBefore(
-            new JwtInterceptorConfiguration(this.jwtSecretKey.toString()),
-            UsernamePasswordAuthenticationFilter.class
-        )
-        .exceptionHandling()
-        .authenticationEntryPoint((request, response, e) -> {
-          response.setStatus(HttpStatus.UNAUTHORIZED.value());
-          response.setContentType("application/json");
-          response.getWriter().write(
-              this.mapper.writeValueAsString(
-                  new BaseResponseError(
-                      HttpStatus.UNAUTHORIZED.value(),
-                      HttpStatus.UNAUTHORIZED.getReasonPhrase(),
-                      "Authorization is empty or invalid"
-                  )
-              )
-          );
-        })
-        .and()
-        .cors();
-  }
+    @Override
+    public void configure(HttpSecurity http) throws Exception {
+        http
+                .authorizeRequests()
+                .anyRequest()
+                .authenticated()
+                .and()
+                .csrf()
+                .disable()
+                .sessionManagement()
+                .sessionCreationPolicy(SessionCreationPolicy.STATELESS)
+                .and()
+                .addFilterBefore(
+                        new JwtInterceptorConfiguration(this.jwtSecretKey.toString()),
+                        UsernamePasswordAuthenticationFilter.class
+                )
+                .exceptionHandling()
+                .authenticationEntryPoint((request, response, e) -> {
+                    response.setStatus(HttpStatus.UNAUTHORIZED.value());
+                    response.setContentType("application/json");
+                    response.getWriter().write(
+                            this.mapper.writeValueAsString(
+                                    new BaseResponseError(
+                                            HttpStatus.UNAUTHORIZED.value(),
+                                            HttpStatus.UNAUTHORIZED.getReasonPhrase(),
+                                            "Authorization is empty or invalid"
+                                    )
+                            )
+                    );
+                })
+                .and()
+                .cors();
+    }
 
-  @Override
-  public void configure(WebSecurity web) {
-    web.ignoring().antMatchers(
-        "/",
-        "/docs",
-        "/docs/",
-        "/swagger",
-        "/swagger/",
-        "/swagger-ui",
-        "/swagger-ui/**",
-        "/swagger-ui.html",
-        "/swagger-resources/**",
-        "/v2/api-docs",
-        "/v3/api-docs/**",
-        "/actuator/**"
-    );
-  }
+    @Override
+    public void configure(WebSecurity web) {
+        web.ignoring().antMatchers(
+                "/",
+                "/docs",
+                "/docs/",
+                "/swagger",
+                "/swagger/",
+                "/swagger-ui",
+                "/swagger-ui/**",
+                "/swagger-ui.html",
+                "/swagger-resources/**",
+                "/v2/api-docs",
+                "/v3/api-docs/**",
+                "/actuator/**"
+        );
+    }
 
-  @Override
-  protected void configure(AuthenticationManagerBuilder auth) {
-    // Remove UserDetailsServiceAutoConfiguration output log
-  }
+    @Override
+    protected void configure(AuthenticationManagerBuilder auth) {
+        // Remove UserDetailsServiceAutoConfiguration output log
+    }
 }

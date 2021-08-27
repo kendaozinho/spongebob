@@ -6,5 +6,5 @@ import com.luizalabs.spongebob.domain.exception.NotFoundException;
 import java.util.UUID;
 
 public interface DeleteCustomerByIdInteractor {
-  void execute(UUID id) throws NotFoundException, InternalServerErrorException;
+    void execute(UUID id) throws NotFoundException, InternalServerErrorException;
 }

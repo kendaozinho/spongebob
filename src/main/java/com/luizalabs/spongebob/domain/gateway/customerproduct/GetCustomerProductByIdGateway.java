@@ -7,5 +7,5 @@ import com.luizalabs.spongebob.domain.exception.NotFoundException;
 import java.util.UUID;
 
 public interface GetCustomerProductByIdGateway {
-  CustomerProduct getOneById(UUID customerId, UUID productId) throws NotFoundException, InternalServerErrorException;
+    CustomerProduct getOneById(UUID customerId, UUID productId) throws NotFoundException, InternalServerErrorException;
 }

@@ -13,27 +13,27 @@ import java.io.IOException;
 import java.util.Collections;
 
 public class JwtInterceptorConfiguration extends OncePerRequestFilter {
-  private final String jwtSecretKey;
+    private final String jwtSecretKey;
 
-  public JwtInterceptorConfiguration(String jwtSecretKey) {
-    this.jwtSecretKey = jwtSecretKey;
-  }
-
-  @Override
-  public void doFilterInternal(
-      HttpServletRequest request,
-      HttpServletResponse response,
-      FilterChain filterChain
-  ) throws IOException, ServletException {
-    String authorization = request.getHeader("Authorization");
-    authorization = (authorization == null ? "" : authorization.replace("Bearer ", ""));
-
-    if (JwtUtil.isValidJwt(this.jwtSecretKey, authorization)) {
-      SecurityContextHolder.getContext().setAuthentication(
-          new UsernamePasswordAuthenticationToken(authorization, null, Collections.emptyList())
-      );
+    public JwtInterceptorConfiguration(String jwtSecretKey) {
+        this.jwtSecretKey = jwtSecretKey;
     }
 
-    filterChain.doFilter(request, response);
-  }
+    @Override
+    public void doFilterInternal(
+            HttpServletRequest request,
+            HttpServletResponse response,
+            FilterChain filterChain
+    ) throws IOException, ServletException {
+        String authorization = request.getHeader("Authorization");
+        authorization = (authorization == null ? "" : authorization.replace("Bearer ", ""));
+
+        if (JwtUtil.isValidJwt(this.jwtSecretKey, authorization)) {
+            SecurityContextHolder.getContext().setAuthentication(
+                    new UsernamePasswordAuthenticationToken(authorization, null, Collections.emptyList())
+            );
+        }
+
+        filterChain.doFilter(request, response);
+    }
 }

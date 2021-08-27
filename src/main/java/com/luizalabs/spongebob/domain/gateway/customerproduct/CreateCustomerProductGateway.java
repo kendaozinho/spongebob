@@ -5,5 +5,5 @@ import com.luizalabs.spongebob.domain.exception.ConflictException;
 import com.luizalabs.spongebob.domain.exception.InternalServerErrorException;
 
 public interface CreateCustomerProductGateway {
-  CustomerProduct create(CustomerProduct request) throws ConflictException, InternalServerErrorException;
+    CustomerProduct create(CustomerProduct request) throws ConflictException, InternalServerErrorException;
 }

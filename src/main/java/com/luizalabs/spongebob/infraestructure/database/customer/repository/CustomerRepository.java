@@ -10,11 +10,11 @@ import java.util.UUID;
 
 @Repository
 public interface CustomerRepository extends JpaRepository<CustomerTable, UUID> {
-  CustomerTable findOneById(UUID id);
+    CustomerTable findOneById(UUID id);
 
-  CustomerTable findOneByEmail(String email);
+    CustomerTable findOneByEmail(String email);
 
-  Page<CustomerTable> findAllByNameContainingIgnoreCase(String name, Pageable pageable);
+    Page<CustomerTable> findAllByNameContainingIgnoreCase(String name, Pageable pageable);
 
-  Page<CustomerTable> findAll(Pageable pageable);
+    Page<CustomerTable> findAll(Pageable pageable);
 }

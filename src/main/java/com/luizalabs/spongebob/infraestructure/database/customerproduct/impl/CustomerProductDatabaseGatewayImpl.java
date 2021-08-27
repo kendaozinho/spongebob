@@ -14,66 +14,66 @@ import java.util.stream.Collectors;
 
 @Service
 public class CustomerProductDatabaseGatewayImpl implements
-    GetCustomerProductByIdGateway,
-    GetCustomerProductsByCustomerIdGateway,
-    CreateCustomerProductGateway,
-    DeleteCustomerProductByIdGateway,
-    DeleteAllCustomerProductsGateway {
-  private final CustomerProductRepository repository;
+        GetCustomerProductByIdGateway,
+        GetCustomerProductsByCustomerIdGateway,
+        CreateCustomerProductGateway,
+        DeleteCustomerProductByIdGateway,
+        DeleteAllCustomerProductsGateway {
+    private final CustomerProductRepository repository;
 
-  public CustomerProductDatabaseGatewayImpl(CustomerProductRepository repository) {
-    this.repository = repository;
-  }
-
-  @Override
-  public CustomerProduct getOneById(UUID customerId, UUID productId) throws CustomerProductNotFoundException {
-    CustomerProductTable customerProduct = this.repository.findOneByCustomerIdAndProductId(customerId, productId);
-
-    if (customerProduct == null) {
-      throw new CustomerProductNotFoundException();
+    public CustomerProductDatabaseGatewayImpl(CustomerProductRepository repository) {
+        this.repository = repository;
     }
 
-    return customerProduct.toEntity();
-  }
+    @Override
+    public CustomerProduct getOneById(UUID customerId, UUID productId) throws CustomerProductNotFoundException {
+        CustomerProductTable customerProduct = this.repository.findOneByCustomerIdAndProductId(customerId, productId);
 
-  @Override
-  public ArrayList<CustomerProduct> getAllByCustomerId(UUID customerId) throws CustomerProductNotFoundException {
-    ArrayList<CustomerProductTable> customerProducts = this.repository.findAllByCustomerId(customerId);
+        if (customerProduct == null) {
+            throw new CustomerProductNotFoundException();
+        }
 
-    if (customerProducts.isEmpty()) {
-      throw new CustomerProductNotFoundException();
+        return customerProduct.toEntity();
     }
 
-    return customerProducts.stream().map(CustomerProductTable::toEntity).collect(Collectors.toCollection(ArrayList::new));
-  }
+    @Override
+    public ArrayList<CustomerProduct> getAllByCustomerId(UUID customerId) throws CustomerProductNotFoundException {
+        ArrayList<CustomerProductTable> customerProducts = this.repository.findAllByCustomerId(customerId);
 
-  @Override
-  public CustomerProduct create(CustomerProduct request) throws CustomerProductAlreadyExistsException {
-    CustomerProductTable customerProduct =
-        this.repository.findOneByCustomerIdAndProductId(request.getCustomerId(), request.getProductId());
+        if (customerProducts.isEmpty()) {
+            throw new CustomerProductNotFoundException();
+        }
 
-    if (customerProduct != null) {
-      throw new CustomerProductAlreadyExistsException();
+        return customerProducts.stream().map(CustomerProductTable::toEntity).collect(Collectors.toCollection(ArrayList::new));
     }
 
-    return this.repository.saveAndFlush(
-        new CustomerProductTable(request.getCustomerId(), request.getProductId())
-    ).toEntity();
-  }
+    @Override
+    public CustomerProduct create(CustomerProduct request) throws CustomerProductAlreadyExistsException {
+        CustomerProductTable customerProduct =
+                this.repository.findOneByCustomerIdAndProductId(request.getCustomerId(), request.getProductId());
 
-  @Override
-  public void deleteOneById(UUID customerId, UUID productId) throws CustomerProductNotFoundException {
-    CustomerProductTable customerProduct = this.repository.findOneByCustomerIdAndProductId(customerId, productId);
+        if (customerProduct != null) {
+            throw new CustomerProductAlreadyExistsException();
+        }
 
-    if (customerProduct == null) {
-      throw new CustomerProductNotFoundException();
+        return this.repository.saveAndFlush(
+                new CustomerProductTable(request.getCustomerId(), request.getProductId())
+        ).toEntity();
     }
 
-    this.repository.delete(customerProduct);
-  }
+    @Override
+    public void deleteOneById(UUID customerId, UUID productId) throws CustomerProductNotFoundException {
+        CustomerProductTable customerProduct = this.repository.findOneByCustomerIdAndProductId(customerId, productId);
 
-  @Override
-  public void deleteAll() {
-    this.repository.deleteAll();
-  }
+        if (customerProduct == null) {
+            throw new CustomerProductNotFoundException();
+        }
+
+        this.repository.delete(customerProduct);
+    }
+
+    @Override
+    public void deleteAll() {
+        this.repository.deleteAll();
+    }
 }

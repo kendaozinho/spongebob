@@ -17,47 +17,47 @@ import java.util.UUID;
 
 @Configuration
 public class SwaggerConfiguration {
-  private final UUID jwtSecretKey;
-  private final Environment env;
+    private final UUID jwtSecretKey;
+    private final Environment env;
 
-  public SwaggerConfiguration(
-      @Value("${spring.application.jwt.secret-key}") UUID jwtSecretKey,
-      @Value("${spring.application.env}") Environment env
-  ) {
-    this.jwtSecretKey = jwtSecretKey;
-    this.env = env;
-  }
+    public SwaggerConfiguration(
+            @Value("${spring.application.jwt.secret-key}") UUID jwtSecretKey,
+            @Value("${spring.application.env}") Environment env
+    ) {
+        this.jwtSecretKey = jwtSecretKey;
+        this.env = env;
+    }
 
-  @Bean
-  public GroupedOpenApi getGroupedOpenApi() {
-    return GroupedOpenApi.builder()
-        .group("default")
-        .pathsToMatch("/**")
-        .build();
-  }
+    @Bean
+    public GroupedOpenApi getGroupedOpenApi() {
+        return GroupedOpenApi.builder()
+                .group("default")
+                .pathsToMatch("/**")
+                .build();
+    }
 
-  @Bean
-  public OpenAPI getOpenAPI() {
-    return new OpenAPI()
-        .info(
-            new Info()
-                .title("Customer API")
-                .description(
-                    "API to manage a customer's favorite products." +
-                        (this.env.equals(Environment.DEVELOPMENT) ? ("\n" + JwtUtil.getEncodedJwt(this.jwtSecretKey.toString())) : "")
+    @Bean
+    public OpenAPI getOpenAPI() {
+        return new OpenAPI()
+                .info(
+                        new Info()
+                                .title("Customer API")
+                                .description(
+                                        "API to manage a customer's favorite products." +
+                                                (this.env.equals(Environment.DEVELOPMENT) ? ("\n" + JwtUtil.getEncodedJwt(this.jwtSecretKey.toString())) : "")
+                                )
+                                .version(ApplicationUtil.getVersion())
                 )
-                .version(ApplicationUtil.getVersion())
-        )
-        .addSecurityItem(new SecurityRequirement().addList("bearerAuth"))
-        .components(
-            new Components()
-                .addSecuritySchemes("bearerAuth",
-                    new SecurityScheme()
-                        .name("bearerAuth")
-                        .type(SecurityScheme.Type.HTTP)
-                        .scheme("bearer")
-                        .bearerFormat("JWT")
-                )
-        );
-  }
+                .addSecurityItem(new SecurityRequirement().addList("bearerAuth"))
+                .components(
+                        new Components()
+                                .addSecuritySchemes("bearerAuth",
+                                        new SecurityScheme()
+                                                .name("bearerAuth")
+                                                .type(SecurityScheme.Type.HTTP)
+                                                .scheme("bearer")
+                                                .bearerFormat("JWT")
+                                )
+                );
+    }
 }

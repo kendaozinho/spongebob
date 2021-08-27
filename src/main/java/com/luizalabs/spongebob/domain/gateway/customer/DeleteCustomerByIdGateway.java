@@ -6,5 +6,5 @@ import com.luizalabs.spongebob.domain.exception.NotFoundException;
 import java.util.UUID;
 
 public interface DeleteCustomerByIdGateway {
-  void deleteOneById(UUID id) throws NotFoundException, InternalServerErrorException;
+    void deleteOneById(UUID id) throws NotFoundException, InternalServerErrorException;
 }

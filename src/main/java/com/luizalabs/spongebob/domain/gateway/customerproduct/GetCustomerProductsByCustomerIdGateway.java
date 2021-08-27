@@ -8,5 +8,5 @@ import java.util.ArrayList;
 import java.util.UUID;
 
 public interface GetCustomerProductsByCustomerIdGateway {
-  ArrayList<CustomerProduct> getAllByCustomerId(UUID customerId) throws NotFoundException, InternalServerErrorException;
+    ArrayList<CustomerProduct> getAllByCustomerId(UUID customerId) throws NotFoundException, InternalServerErrorException;
 }

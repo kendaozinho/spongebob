@@ -8,36 +8,36 @@ import javax.validation.constraints.NotNull;
 
 @Schema
 public class UpdateCustomerEndpointRequest {
-  @NotNull
-  @NotBlank
-  @Schema(required = true, description = "Name", example = "Kenneth Gottschalk de Azevedo")
-  private String name;
+    @NotNull
+    @NotBlank
+    @Schema(required = true, description = "Name", example = "Kenneth Gottschalk de Azevedo")
+    private String name;
 
-  @NotNull
-  @NotBlank
-  @Schema(required = true, description = "Email", example = "kendao@luizalabs.com")
-  private String email;
+    @NotNull
+    @NotBlank
+    @Schema(required = true, description = "Email", example = "kendao@luizalabs.com")
+    private String email;
 
-  public UpdateCustomerEndpointRequest() {
-  }
+    public UpdateCustomerEndpointRequest() {
+    }
 
-  public UpdateCustomerEndpointRequest(String name, String email) {
-    this.name = name;
-    this.email = email;
-  }
+    public UpdateCustomerEndpointRequest(String name, String email) {
+        this.name = name;
+        this.email = email;
+    }
 
-  public String getName() {
-    return this.name;
-  }
+    public String getName() {
+        return this.name;
+    }
 
-  public String getEmail() {
-    return this.email;
-  }
+    public String getEmail() {
+        return this.email;
+    }
 
-  public Customer toEntity() {
-    Customer customer = new Customer();
-    customer.setName(this.getName());
-    customer.setEmail(this.getEmail());
-    return customer;
-  }
+    public Customer toEntity() {
+        Customer customer = new Customer();
+        customer.setName(this.getName());
+        customer.setEmail(this.getEmail());
+        return customer;
+    }
 }

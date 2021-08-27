@@ -5,5 +5,5 @@ import com.luizalabs.spongebob.domain.exception.InternalServerErrorException;
 import com.luizalabs.spongebob.domain.exception.NotFoundException;
 
 public interface GetCustomerByEmailGateway {
-  Customer getOneByEmail(String email) throws NotFoundException, InternalServerErrorException;
+    Customer getOneByEmail(String email) throws NotFoundException, InternalServerErrorException;
 }

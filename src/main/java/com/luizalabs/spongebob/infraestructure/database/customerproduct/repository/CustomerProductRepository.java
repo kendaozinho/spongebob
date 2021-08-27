@@ -9,7 +9,7 @@ import java.util.UUID;
 
 @Repository
 public interface CustomerProductRepository extends JpaRepository<CustomerProductTable, CustomerProductTable.CustomerProductTableId> {
-  CustomerProductTable findOneByCustomerIdAndProductId(UUID customerId, UUID productId);
+    CustomerProductTable findOneByCustomerIdAndProductId(UUID customerId, UUID productId);
 
-  ArrayList<CustomerProductTable> findAllByCustomerId(UUID customerId);
+    ArrayList<CustomerProductTable> findAllByCustomerId(UUID customerId);
 }

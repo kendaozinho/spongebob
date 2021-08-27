@@ -18,42 +18,42 @@ import java.util.UUID;
 
 @Service
 public class ProductApiGatewayImpl implements GetProductByIdGateway {
-  private final Logger logger = LoggerFactory.getLogger(this.getClass());
+    private final Logger logger = LoggerFactory.getLogger(this.getClass());
 
-  private final ProductApiClient client;
+    private final ProductApiClient client;
 
-  public ProductApiGatewayImpl(
-      ProductApiClient client
-  ) {
-    this.client = client;
-  }
-
-  @Override
-  public Product getOneById(UUID id) throws ProductNotFoundException, UnableToGetProductException, UnexpectedErrorOnGetProductException {
-    try {
-      HttpEntity<ProductApiResponse> response = this.client.getRestTemplate().getForEntity("/" + id + "/", ProductApiResponse.class);
-
-      this.logger.info("[PRODUCT API] Product " + id + " was obtained with success!");
-
-      return response.getBody().toEntity();
-    } catch (HttpStatusCodeException e) {
-      String errorMessage = "[PRODUCT API] Unable to get product " + id + "\n" +
-          "STATUS: " + e.getStatusCode().value() + " & BODY: " + e.getResponseBodyAsString();
-
-      if (e.getStatusCode().is5xxServerError()) {
-        this.logger.error(errorMessage);
-      } else {
-        this.logger.warn(errorMessage);
-      }
-
-      if (e.getStatusCode().equals(HttpStatus.NOT_FOUND)) {
-        throw new ProductNotFoundException(id);
-      }
-
-      throw new UnableToGetProductException(id);
-    } catch (Throwable t) {
-      this.logger.error("[PRODUCT API] Unable to get product " + id + ".\nTHROWABLE: " + t);
-      throw new UnexpectedErrorOnGetProductException(id, t);
+    public ProductApiGatewayImpl(
+            ProductApiClient client
+    ) {
+        this.client = client;
     }
-  }
+
+    @Override
+    public Product getOneById(UUID id) throws ProductNotFoundException, UnableToGetProductException, UnexpectedErrorOnGetProductException {
+        try {
+            HttpEntity<ProductApiResponse> response = this.client.getRestTemplate().getForEntity("/" + id + "/", ProductApiResponse.class);
+
+            this.logger.info("[PRODUCT API] Product " + id + " was obtained with success!");
+
+            return response.getBody().toEntity();
+        } catch (HttpStatusCodeException e) {
+            String errorMessage = "[PRODUCT API] Unable to get product " + id + "\n" +
+                    "STATUS: " + e.getStatusCode().value() + " & BODY: " + e.getResponseBodyAsString();
+
+            if (e.getStatusCode().is5xxServerError()) {
+                this.logger.error(errorMessage);
+            } else {
+                this.logger.warn(errorMessage);
+            }
+
+            if (e.getStatusCode().equals(HttpStatus.NOT_FOUND)) {
+                throw new ProductNotFoundException(id);
+            }
+
+            throw new UnableToGetProductException(id);
+        } catch (Throwable t) {
+            this.logger.error("[PRODUCT API] Unable to get product " + id + ".\nTHROWABLE: " + t);
+            throw new UnexpectedErrorOnGetProductException(id, t);
+        }
+    }
 }

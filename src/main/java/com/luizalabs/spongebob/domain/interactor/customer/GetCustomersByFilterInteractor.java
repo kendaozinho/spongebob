@@ -8,6 +8,6 @@ import java.util.ArrayList;
 import java.util.UUID;
 
 public interface GetCustomersByFilterInteractor {
-  ArrayList<Customer> execute(UUID id, String name, String email, Integer pageNumber, Integer pageSize)
-      throws NotFoundException, InternalServerErrorException;
+    ArrayList<Customer> execute(UUID id, String name, String email, Integer pageNumber, Integer pageSize)
+            throws NotFoundException, InternalServerErrorException;
 }

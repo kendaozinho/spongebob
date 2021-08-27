@@ -5,5 +5,5 @@ import com.luizalabs.spongebob.domain.exception.ConflictException;
 import com.luizalabs.spongebob.domain.exception.InternalServerErrorException;
 
 public interface CreateCustomerInteractor {
-  Customer execute(Customer request) throws ConflictException, InternalServerErrorException;
+    Customer execute(Customer request) throws ConflictException, InternalServerErrorException;
 }

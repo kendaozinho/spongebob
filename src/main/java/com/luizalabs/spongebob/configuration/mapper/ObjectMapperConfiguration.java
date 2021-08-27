@@ -7,8 +7,8 @@ import org.springframework.context.annotation.Configuration;
 
 @Configuration
 public class ObjectMapperConfiguration {
-  @Bean
-  public ObjectMapper objectMapper() {
-    return new ObjectMapper().setSerializationInclusion(JsonInclude.Include.NON_NULL);
-  }
+    @Bean
+    public ObjectMapper objectMapper() {
+        return new ObjectMapper().setSerializationInclusion(JsonInclude.Include.NON_NULL);
+    }
 }
