@@ -12,6 +12,8 @@ import java.util.UUID;
 public interface CharacterRepository extends JpaRepository<CharacterTable, UUID> {
     CharacterTable findOneById(UUID id);
 
+    CharacterTable findOneByName(String name);
+
     Page<CharacterTable> findAllByNameContainingIgnoreCase(String name, Pageable pageable);
 
     Page<CharacterTable> findAll(Pageable pageable);

@@ -69,9 +69,9 @@ public class CharacterDatabaseByIdGatewayImpl implements
 
     @Override
     public Character create(Character request) throws CharacterNameAlreadyExistsException {
-        Page<CharacterTable> characters = this.repository.findAllByNameContainingIgnoreCase(request.getName(), null);
+        CharacterTable character = this.repository.findOneByName(request.getName());
 
-        if (!characters.isEmpty()) {
+        if (character != null) {
             throw new CharacterNameAlreadyExistsException();
         }
 
@@ -92,9 +92,9 @@ public class CharacterDatabaseByIdGatewayImpl implements
             throw new CharacterNotFoundException();
         }
 
-        Page<CharacterTable> charactersFilteredByName = this.repository.findAllByNameContainingIgnoreCase(request.getName(), null);
+        CharacterTable existingCharacter = this.repository.findOneByName(request.getName());
 
-        if (!charactersFilteredByName.isEmpty() && !charactersFilteredByName.toList().get(0).getId().equals(id)) {
+        if (existingCharacter != null && !existingCharacter.getId().equals(id)) {
             throw new CharacterNameAlreadyExistsException();
         }
 

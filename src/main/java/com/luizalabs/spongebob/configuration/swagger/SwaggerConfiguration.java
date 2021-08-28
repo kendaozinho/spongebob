@@ -32,32 +32,37 @@ public class SwaggerConfiguration {
     public GroupedOpenApi getGroupedOpenApi() {
         return GroupedOpenApi.builder()
                 .group("default")
-                .pathsToMatch("/**")
+                .pathsToMatch(!this.env.equals(Environment.PRODUCTION) ? "/**" : "")
                 .build();
     }
 
     @Bean
     public OpenAPI getOpenAPI() {
-        return new OpenAPI()
+        OpenAPI openAPI = new OpenAPI()
                 .info(
                         new Info()
                                 .title("Sponge Bob API")
                                 .description(
-                                        "API to get Sponge Bob series info." +
-                                                (this.env.equals(Environment.DEVELOPMENT) ? ("\n" + JwtUtil.getEncodedJwt(this.jwtSecretKey.toString())) : "")
+                                        "API to get Sponge Bob series info.<br/>" +
+                                                (!this.env.equals(Environment.PRODUCTION) ? (JwtUtil.getEncodedJwt(this.jwtSecretKey.toString())) : "Swagger is unavailable")
                                 )
                                 .version(ApplicationUtil.getVersion())
-                )
-                .addSecurityItem(new SecurityRequirement().addList("bearerAuth"))
-                .components(
-                        new Components()
-                                .addSecuritySchemes("bearerAuth",
-                                        new SecurityScheme()
-                                                .name("bearerAuth")
-                                                .type(SecurityScheme.Type.HTTP)
-                                                .scheme("bearer")
-                                                .bearerFormat("JWT")
-                                )
                 );
+
+        if (!this.env.equals(Environment.PRODUCTION)) {
+            openAPI.addSecurityItem(new SecurityRequirement().addList("bearerAuth"))
+                    .components(
+                            new Components()
+                                    .addSecuritySchemes("bearerAuth",
+                                            new SecurityScheme()
+                                                    .name("bearerAuth")
+                                                    .type(SecurityScheme.Type.HTTP)
+                                                    .scheme("bearer")
+                                                    .bearerFormat("JWT")
+                                    )
+                    );
+        }
+
+        return openAPI;
     }
 }

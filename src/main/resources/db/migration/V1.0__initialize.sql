@@ -3,7 +3,7 @@ CREATE EXTENSION IF NOT EXISTS "uuid-ossp";
 CREATE TABLE character
 (
    id UUID NOT NULL DEFAULT uuid_generate_v4() PRIMARY KEY,
-   name VARCHAR NOT NULL,
+   name VARCHAR NOT NULL UNIQUE,
    description VARCHAR,
    image VARCHAR,
    created_at TIMESTAMP NOT NULL,
