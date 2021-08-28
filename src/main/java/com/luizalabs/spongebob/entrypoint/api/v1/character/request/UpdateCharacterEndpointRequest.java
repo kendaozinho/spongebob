@@ -2,10 +2,16 @@ package com.luizalabs.spongebob.entrypoint.api.v1.character.request;
 
 import com.luizalabs.spongebob.domain.entity.Character;
 import io.swagger.v3.oas.annotations.media.Schema;
+import lombok.*;
 
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 
+@Getter
+@Setter
+@NoArgsConstructor
+@AllArgsConstructor
+@ToString
 @Schema
 public class UpdateCharacterEndpointRequest {
     @NotNull
@@ -17,22 +23,6 @@ public class UpdateCharacterEndpointRequest {
     @NotBlank
     @Schema(required = true, description = "Description", example = "kendao@luizalabs.com")
     private String description;
-
-    public UpdateCharacterEndpointRequest() {
-    }
-
-    public UpdateCharacterEndpointRequest(String name, String description) {
-        this.name = name;
-        this.description = description;
-    }
-
-    public String getName() {
-        return this.name;
-    }
-
-    public String getDescription() {
-        return this.description;
-    }
 
     public Character toEntity() {
         Character character = new Character();

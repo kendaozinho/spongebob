@@ -86,8 +86,9 @@ public class CharacterEndpointImpl {
     public GetCharacterByIdEndpointResponse getById(
             @PathVariable @Parameter(name = "id", description = "id") UUID id
     ) {
+        Character character = this.getCharacterByIdInteractor.execute(id);
         return new GetCharacterByIdEndpointResponse(
-                this.getCharacterByIdInteractor.execute(id)
+                character.getId(), character.getName(), character.getDescription()
         );
     }
 
