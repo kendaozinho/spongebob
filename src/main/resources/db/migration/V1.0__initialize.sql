@@ -1,6 +1,6 @@
 CREATE EXTENSION IF NOT EXISTS "uuid-ossp";
 
-CREATE TABLE `character`
+CREATE TABLE character
 (
    id UUID NOT NULL DEFAULT uuid_generate_v4() PRIMARY KEY,
    name VARCHAR NOT NULL,
@@ -9,4 +9,4 @@ CREATE TABLE `character`
    updated_at TIMESTAMP
 );
 
-CREATE INDEX character_name ON `character` (name);
+CREATE INDEX character_name ON character (name);
