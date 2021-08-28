@@ -41,9 +41,9 @@ public class SwaggerConfiguration {
         return new OpenAPI()
                 .info(
                         new Info()
-                                .title("Customer API")
+                                .title("Sponge Bob API")
                                 .description(
-                                        "API to manage a customer's favorite products." +
+                                        "API to get Sponge Bob series info." +
                                                 (this.env.equals(Environment.DEVELOPMENT) ? ("\n" + JwtUtil.getEncodedJwt(this.jwtSecretKey.toString())) : "")
                                 )
                                 .version(ApplicationUtil.getVersion())
