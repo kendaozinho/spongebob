@@ -1,4 +1,4 @@
-package com.luizalabs.spongebob.entrypoint.api.v1.character.response;
+package com.luizalabs.spongebob.api.v1.character.response;
 
 import lombok.*;
 

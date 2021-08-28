@@ -1,4 +1,4 @@
-package com.luizalabs.spongebob.entrypoint.web.swagger.impl;
+package com.luizalabs.spongebob.web.swagger.impl;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;

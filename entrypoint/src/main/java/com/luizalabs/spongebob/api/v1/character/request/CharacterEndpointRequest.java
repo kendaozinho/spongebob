@@ -1,6 +1,6 @@
-package com.luizalabs.spongebob.entrypoint.api.v1.character.request;
+package com.luizalabs.spongebob.api.v1.character.request;
 
-import com.luizalabs.spongebob.domain.entity.Character;
+import com.luizalabs.spongebob.entity.Character;
 import io.swagger.v3.oas.annotations.media.Schema;
 import lombok.*;
 

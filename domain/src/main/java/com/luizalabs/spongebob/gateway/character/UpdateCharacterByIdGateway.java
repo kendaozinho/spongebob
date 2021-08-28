@@ -1,9 +1,9 @@
-package com.luizalabs.spongebob.domain.gateway.character;
+package com.luizalabs.spongebob.gateway.character;
 
-import com.luizalabs.spongebob.domain.entity.Character;
-import com.luizalabs.spongebob.domain.exception.ConflictException;
-import com.luizalabs.spongebob.domain.exception.InternalServerErrorException;
-import com.luizalabs.spongebob.domain.exception.NotFoundException;
+import com.luizalabs.spongebob.entity.Character;
+import com.luizalabs.spongebob.exception.ConflictException;
+import com.luizalabs.spongebob.exception.InternalServerErrorException;
+import com.luizalabs.spongebob.exception.NotFoundException;
 
 import java.util.UUID;
 

@@ -1,4 +1,4 @@
-package com.luizalabs.spongebob.domain.entity;
+package com.luizalabs.spongebob.entity;
 
 import lombok.*;
 

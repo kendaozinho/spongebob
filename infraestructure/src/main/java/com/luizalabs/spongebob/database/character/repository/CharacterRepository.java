@@ -1,6 +1,6 @@
-package com.luizalabs.spongebob.infraestructure.database.character.repository;
+package com.luizalabs.spongebob.database.character.repository;
 
-import com.luizalabs.spongebob.infraestructure.database.character.table.CharacterTable;
+import com.luizalabs.spongebob.database.character.table.CharacterTable;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;

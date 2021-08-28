@@ -1,7 +1,7 @@
-package com.luizalabs.spongebob.domain.interactor.character;
+package com.luizalabs.spongebob.interactor.character;
 
-import com.luizalabs.spongebob.domain.exception.InternalServerErrorException;
-import com.luizalabs.spongebob.domain.exception.NotFoundException;
+import com.luizalabs.spongebob.exception.InternalServerErrorException;
+import com.luizalabs.spongebob.exception.NotFoundException;
 
 import java.util.UUID;
 

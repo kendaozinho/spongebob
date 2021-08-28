@@ -1,6 +1,6 @@
-package com.luizalabs.spongebob.infraestructure.database.character.exception;
+package com.luizalabs.spongebob.database.character.exception;
 
-import com.luizalabs.spongebob.domain.exception.ConflictException;
+import com.luizalabs.spongebob.exception.ConflictException;
 
 public class CharacterNameAlreadyExistsException extends ConflictException {
     public CharacterNameAlreadyExistsException() {

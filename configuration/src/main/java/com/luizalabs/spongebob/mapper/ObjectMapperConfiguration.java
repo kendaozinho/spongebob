@@ -1,4 +1,4 @@
-package com.luizalabs.spongebob.configuration.mapper;
+package com.luizalabs.spongebob.mapper;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.databind.ObjectMapper;

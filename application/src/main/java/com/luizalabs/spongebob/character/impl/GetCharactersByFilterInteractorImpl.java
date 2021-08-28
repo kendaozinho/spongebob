@@ -1,10 +1,10 @@
-package com.luizalabs.spongebob.application.character.impl;
+package com.luizalabs.spongebob.character.impl;
 
-import com.luizalabs.spongebob.domain.entity.Character;
-import com.luizalabs.spongebob.domain.gateway.character.GetAllCharactersGateway;
-import com.luizalabs.spongebob.domain.gateway.character.GetCharacterByIdGateway;
-import com.luizalabs.spongebob.domain.gateway.character.GetCharactersByNameGateway;
-import com.luizalabs.spongebob.domain.interactor.character.GetCharactersByFilterInteractor;
+import com.luizalabs.spongebob.entity.Character;
+import com.luizalabs.spongebob.gateway.character.GetAllCharactersGateway;
+import com.luizalabs.spongebob.gateway.character.GetCharacterByIdGateway;
+import com.luizalabs.spongebob.gateway.character.GetCharactersByNameGateway;
+import com.luizalabs.spongebob.interactor.character.GetCharactersByFilterInteractor;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;

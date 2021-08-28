@@ -1,4 +1,4 @@
-package com.luizalabs.spongebob.util;
+package com.luizalabs.spongebob;
 
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;

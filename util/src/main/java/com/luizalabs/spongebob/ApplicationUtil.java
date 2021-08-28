@@ -1,8 +1,11 @@
-package com.luizalabs.spongebob.util;
+package com.luizalabs.spongebob;
 
-import com.luizalabs.spongebob.SpongeBobApplication;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.context.ApplicationContext;
+
+import java.util.Map;
 
 public final class ApplicationUtil {
     private static final Logger logger = LoggerFactory.getLogger(ApplicationUtil.class);
@@ -10,9 +13,13 @@ public final class ApplicationUtil {
     private ApplicationUtil() {
     }
 
-    public static String getVersion() {
+    public static String getVersion(ApplicationContext context) {
         try {
-            return SpongeBobApplication.class.getPackage().getImplementationVersion();
+            Map beans =
+                context == null ? null : context.getBeansWithAnnotation(SpringBootApplication.class);
+            if (beans != null && !beans.isEmpty()) {
+                return beans.values().toArray()[0].getClass().getPackage().getImplementationVersion();
+            }
         } catch (Throwable t) {
             ApplicationUtil.logger.error("Unable to get application version: " + t);
         }

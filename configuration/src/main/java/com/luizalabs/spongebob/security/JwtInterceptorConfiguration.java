@@ -1,6 +1,6 @@
-package com.luizalabs.spongebob.configuration.security;
+package com.luizalabs.spongebob.security;
 
-import com.luizalabs.spongebob.util.JwtUtil;
+import com.luizalabs.spongebob.JwtUtil;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.web.filter.OncePerRequestFilter;

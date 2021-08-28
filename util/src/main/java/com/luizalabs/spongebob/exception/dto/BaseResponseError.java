@@ -1,4 +1,4 @@
-package com.luizalabs.spongebob.domain.exception.dto;
+package com.luizalabs.spongebob.exception.dto;
 
 import lombok.*;
 

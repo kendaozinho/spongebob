@@ -1,8 +1,8 @@
-package com.luizalabs.spongebob.application.character.impl;
+package com.luizalabs.spongebob.character.impl;
 
-import com.luizalabs.spongebob.domain.entity.Character;
-import com.luizalabs.spongebob.domain.gateway.character.UpdateCharacterByIdGateway;
-import com.luizalabs.spongebob.domain.interactor.character.UpdateCharacterByIdInteractor;
+import com.luizalabs.spongebob.entity.Character;
+import com.luizalabs.spongebob.gateway.character.UpdateCharacterByIdGateway;
+import com.luizalabs.spongebob.interactor.character.UpdateCharacterByIdInteractor;
 import org.springframework.stereotype.Service;
 
 import java.util.UUID;

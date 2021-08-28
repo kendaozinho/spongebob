@@ -1,11 +1,11 @@
-package com.luizalabs.spongebob.infraestructure.database.character.impl;
+package com.luizalabs.spongebob.database.character.impl;
 
-import com.luizalabs.spongebob.domain.entity.Character;
-import com.luizalabs.spongebob.domain.gateway.character.*;
-import com.luizalabs.spongebob.infraestructure.database.character.exception.CharacterNameAlreadyExistsException;
-import com.luizalabs.spongebob.infraestructure.database.character.exception.CharacterNotFoundException;
-import com.luizalabs.spongebob.infraestructure.database.character.repository.CharacterRepository;
-import com.luizalabs.spongebob.infraestructure.database.character.table.CharacterTable;
+import com.luizalabs.spongebob.entity.Character;
+import com.luizalabs.spongebob.gateway.character.*;
+import com.luizalabs.spongebob.database.character.exception.CharacterNameAlreadyExistsException;
+import com.luizalabs.spongebob.database.character.exception.CharacterNotFoundException;
+import com.luizalabs.spongebob.database.character.repository.CharacterRepository;
+import com.luizalabs.spongebob.database.character.table.CharacterTable;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Sort;

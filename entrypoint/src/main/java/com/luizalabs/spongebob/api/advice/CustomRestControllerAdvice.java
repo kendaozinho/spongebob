@@ -1,10 +1,10 @@
-package com.luizalabs.spongebob.entrypoint.api.advice;
+package com.luizalabs.spongebob.api.advice;
 
-import com.luizalabs.spongebob.domain.exception.BadGatewayException;
-import com.luizalabs.spongebob.domain.exception.ConflictException;
-import com.luizalabs.spongebob.domain.exception.InternalServerErrorException;
-import com.luizalabs.spongebob.domain.exception.NotFoundException;
-import com.luizalabs.spongebob.domain.exception.dto.BaseResponseError;
+import com.luizalabs.spongebob.exception.BadGatewayException;
+import com.luizalabs.spongebob.exception.ConflictException;
+import com.luizalabs.spongebob.exception.InternalServerErrorException;
+import com.luizalabs.spongebob.exception.NotFoundException;
+import com.luizalabs.spongebob.exception.dto.BaseResponseError;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.converter.HttpMessageNotReadableException;
 import org.springframework.web.HttpRequestMethodNotSupportedException;

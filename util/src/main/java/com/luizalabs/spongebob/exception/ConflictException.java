@@ -1,4 +1,4 @@
-package com.luizalabs.spongebob.domain.exception;
+package com.luizalabs.spongebob.exception;
 
 public class ConflictException extends RuntimeException {
     public ConflictException(String details) {

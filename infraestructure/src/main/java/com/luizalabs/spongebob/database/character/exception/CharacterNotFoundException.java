@@ -1,6 +1,6 @@
-package com.luizalabs.spongebob.infraestructure.database.character.exception;
+package com.luizalabs.spongebob.database.character.exception;
 
-import com.luizalabs.spongebob.domain.exception.NotFoundException;
+import com.luizalabs.spongebob.exception.NotFoundException;
 
 public class CharacterNotFoundException extends NotFoundException {
     public CharacterNotFoundException() {

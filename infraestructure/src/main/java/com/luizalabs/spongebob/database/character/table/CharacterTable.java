@@ -1,6 +1,6 @@
-package com.luizalabs.spongebob.infraestructure.database.character.table;
+package com.luizalabs.spongebob.database.character.table;
 
-import com.luizalabs.spongebob.domain.entity.Character;
+import com.luizalabs.spongebob.entity.Character;
 import lombok.*;
 
 import javax.persistence.*;

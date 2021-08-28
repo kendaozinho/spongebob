@@ -1,7 +1,7 @@
-package com.luizalabs.spongebob.configuration.security;
+package com.luizalabs.spongebob.security;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.luizalabs.spongebob.domain.exception.dto.BaseResponseError;
+import com.luizalabs.spongebob.exception.dto.BaseResponseError;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.http.HttpStatus;

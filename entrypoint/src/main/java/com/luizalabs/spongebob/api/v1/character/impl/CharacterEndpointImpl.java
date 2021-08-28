@@ -1,10 +1,10 @@
-package com.luizalabs.spongebob.entrypoint.api.v1.character.impl;
+package com.luizalabs.spongebob.api.v1.character.impl;
 
-import com.luizalabs.spongebob.domain.entity.Character;
-import com.luizalabs.spongebob.domain.interactor.character.*;
-import com.luizalabs.spongebob.entrypoint.api.v1.character.request.CharacterEndpointRequest;
-import com.luizalabs.spongebob.entrypoint.api.v1.character.response.CharacterEndpointResponse;
-import com.luizalabs.spongebob.entrypoint.api.v1.character.response.CharacterListEndpointResponse;
+import com.luizalabs.spongebob.entity.Character;
+import com.luizalabs.spongebob.interactor.character.*;
+import com.luizalabs.spongebob.api.v1.character.request.CharacterEndpointRequest;
+import com.luizalabs.spongebob.api.v1.character.response.CharacterEndpointResponse;
+import com.luizalabs.spongebob.api.v1.character.response.CharacterListEndpointResponse;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.Parameter;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;

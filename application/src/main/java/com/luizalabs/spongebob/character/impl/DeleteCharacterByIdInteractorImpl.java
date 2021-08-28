@@ -1,10 +1,9 @@
-package com.luizalabs.spongebob.application.character.impl;
+package com.luizalabs.spongebob.character.impl;
 
-import com.luizalabs.spongebob.domain.gateway.character.DeleteCharacterByIdGateway;
-import com.luizalabs.spongebob.domain.interactor.character.DeleteCharacterByIdInteractor;
+import com.luizalabs.spongebob.gateway.character.DeleteCharacterByIdGateway;
+import com.luizalabs.spongebob.interactor.character.DeleteCharacterByIdInteractor;
 import org.springframework.stereotype.Service;
 
-import javax.transaction.Transactional;
 import java.util.UUID;
 
 @Service
@@ -18,7 +17,6 @@ public class DeleteCharacterByIdInteractorImpl implements DeleteCharacterByIdInt
     }
 
     @Override
-    @Transactional
     public void execute(UUID id) {
         this.deleteCharacterByIdGateway.deleteOneById(id);
     }
