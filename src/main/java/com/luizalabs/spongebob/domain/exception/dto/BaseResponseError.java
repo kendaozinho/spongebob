@@ -6,6 +6,8 @@ import lombok.*;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
+@Builder
+@EqualsAndHashCode
 @ToString
 public class BaseResponseError {
     private Integer code;

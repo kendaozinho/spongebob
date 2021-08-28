@@ -11,23 +11,28 @@ import javax.validation.constraints.NotNull;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
+@Builder
+@EqualsAndHashCode
 @ToString
 @Schema
-public class UpdateCharacterEndpointRequest {
+public class CharacterEndpointRequest {
     @NotNull
     @NotBlank
-    @Schema(required = true, description = "Name", example = "Kenneth Gottschalk de Azevedo")
+    @Schema(required = true, description = "Name", example = "SpongeBob SquarePants")
     private String name;
 
-    @NotNull
-    @NotBlank
-    @Schema(required = true, description = "Description", example = "kendao@luizalabs.com")
+    @Schema(description = "Description", example = "A talking sponge")
     private String description;
+
+    @Schema(description = "Image", example = "https://www.image.com/spongebob.png")
+    private String image;
 
     public Character toEntity() {
         Character character = new Character();
         character.setName(this.getName());
         character.setDescription(this.getDescription());
+        character.setImage(this.getImage());
         return character;
     }
 }
+

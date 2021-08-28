@@ -8,9 +8,12 @@ import java.util.UUID;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
+@Builder
+@EqualsAndHashCode
 @ToString
 public class Character {
     private UUID id;
     private String name;
     private String description;
+    private String image;
 }

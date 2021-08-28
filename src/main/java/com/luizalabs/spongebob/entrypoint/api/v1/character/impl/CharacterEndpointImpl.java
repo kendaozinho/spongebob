@@ -2,12 +2,9 @@ package com.luizalabs.spongebob.entrypoint.api.v1.character.impl;
 
 import com.luizalabs.spongebob.domain.entity.Character;
 import com.luizalabs.spongebob.domain.interactor.character.*;
-import com.luizalabs.spongebob.entrypoint.api.v1.character.request.CreateCharacterEndpointRequest;
-import com.luizalabs.spongebob.entrypoint.api.v1.character.request.UpdateCharacterEndpointRequest;
-import com.luizalabs.spongebob.entrypoint.api.v1.character.response.CreateCharacterEndpointResponse;
-import com.luizalabs.spongebob.entrypoint.api.v1.character.response.GetCharacterByFilterEndpointResponse;
-import com.luizalabs.spongebob.entrypoint.api.v1.character.response.GetCharacterByIdEndpointResponse;
-import com.luizalabs.spongebob.entrypoint.api.v1.character.response.UpdateCharacterEndpointResponse;
+import com.luizalabs.spongebob.entrypoint.api.v1.character.request.CharacterEndpointRequest;
+import com.luizalabs.spongebob.entrypoint.api.v1.character.response.CharacterEndpointResponse;
+import com.luizalabs.spongebob.entrypoint.api.v1.character.response.CharacterListEndpointResponse;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.Parameter;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
@@ -58,13 +55,13 @@ public class CharacterEndpointImpl {
                     @ApiResponse(responseCode = "500", description = "Internal Server Error")
             }
     )
-    public GetCharacterByFilterEndpointResponse getByFilter(
+    public CharacterListEndpointResponse getByFilter(
             @RequestParam(required = false) @Parameter(name = "id", description = "id") UUID id,
             @RequestParam(required = false) @Parameter(name = "name", description = "name") String name,
             @RequestParam(required = false, defaultValue = "1") @Parameter(name = "offset", description = "page number") @Min(1) Integer offset,
             @RequestParam(required = false, defaultValue = "10") @Parameter(name = "limit", description = "page size") @Min(1) Integer limit
     ) {
-        return new GetCharacterByFilterEndpointResponse(
+        return new CharacterListEndpointResponse(
                 this.getCharactersByFilterInteractor.execute(id, name, offset, limit),
                 offset, limit
         );
@@ -83,12 +80,12 @@ public class CharacterEndpointImpl {
                     @ApiResponse(responseCode = "502", description = "Bad Gateway")
             }
     )
-    public GetCharacterByIdEndpointResponse getById(
+    public CharacterEndpointResponse getById(
             @PathVariable @Parameter(name = "id", description = "id") UUID id
     ) {
         Character character = this.getCharacterByIdInteractor.execute(id);
-        return new GetCharacterByIdEndpointResponse(
-                character.getId(), character.getName(), character.getDescription()
+        return new CharacterEndpointResponse(
+                character.getId(), character.getName(), character.getDescription(), character.getImage()
         );
     }
 
@@ -104,9 +101,9 @@ public class CharacterEndpointImpl {
                     @ApiResponse(responseCode = "500", description = "Internal Server Error")
             }
     )
-    public CreateCharacterEndpointResponse post(@RequestBody @Valid CreateCharacterEndpointRequest request) {
+    public CharacterEndpointResponse post(@RequestBody @Valid CharacterEndpointRequest request) {
         Character character = this.createCharacterInteractor.execute(request.toEntity());
-        return new CreateCharacterEndpointResponse(character.getId(), character.getName(), character.getDescription());
+        return new CharacterEndpointResponse(character.getId(), character.getName(), character.getDescription(), character.getImage());
     }
 
     @PutMapping("/{id}")
@@ -122,12 +119,12 @@ public class CharacterEndpointImpl {
                     @ApiResponse(responseCode = "500", description = "Internal Server Error")
             }
     )
-    public UpdateCharacterEndpointResponse put(
+    public CharacterEndpointResponse put(
             @PathVariable @Parameter(name = "id", description = "id") UUID id,
-            @RequestBody @Valid UpdateCharacterEndpointRequest request
+            @RequestBody @Valid CharacterEndpointRequest request
     ) {
         Character character = this.updateCharacterByIdInteractor.execute(id, request.toEntity());
-        return new UpdateCharacterEndpointResponse(character.getId(), character.getName(), character.getDescription());
+        return new CharacterEndpointResponse(character.getId(), character.getName(), character.getDescription(), character.getImage());
     }
 
     @DeleteMapping("/{id}")

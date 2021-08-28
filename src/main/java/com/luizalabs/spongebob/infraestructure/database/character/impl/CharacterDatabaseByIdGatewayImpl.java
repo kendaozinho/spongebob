@@ -76,7 +76,11 @@ public class CharacterDatabaseByIdGatewayImpl implements
         }
 
         return this.repository.saveAndFlush(
-                new CharacterTable(request.getName(), request.getDescription())
+                CharacterTable.builder()
+                        .name(request.getName())
+                        .description(request.getDescription())
+                        .image(request.getImage())
+                        .build()
         ).toEntity();
     }
 
@@ -95,7 +99,8 @@ public class CharacterDatabaseByIdGatewayImpl implements
         }
 
         character.setName(request.getName());
-        character.setCharacter(request.getDescription());
+        character.setDescription(request.getDescription());
+        character.setImage(request.getImage());
 
         return this.repository.saveAndFlush(character).toEntity();
     }

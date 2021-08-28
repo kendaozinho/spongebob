@@ -11,15 +11,17 @@ import java.util.stream.Collectors;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
+@Builder
+@EqualsAndHashCode
 @ToString
-public class GetCharacterByFilterEndpointResponse {
+public class CharacterListEndpointResponse {
     private MetaEndpointResponse meta;
     private ArrayList<CharacterEndpointResponse> characters;
 
-    public GetCharacterByFilterEndpointResponse(ArrayList<Character> characters, Integer pageNumber, Integer pageSize) {
+    public CharacterListEndpointResponse(ArrayList<Character> characters, Integer pageNumber, Integer pageSize) {
         this.meta = new MetaEndpointResponse(pageNumber, pageSize);
         this.characters = characters.stream().map(character ->
-                new CharacterEndpointResponse(character.getId(), character.getName(), character.getDescription())
+                new CharacterEndpointResponse(character.getId(), character.getName(), character.getDescription(), character.getImage())
         ).collect(Collectors.toCollection(ArrayList::new));
     }
 
@@ -27,6 +29,8 @@ public class GetCharacterByFilterEndpointResponse {
     @Setter
     @NoArgsConstructor
     @AllArgsConstructor
+    @Builder
+    @EqualsAndHashCode
     @ToString
     public static class MetaEndpointResponse {
         private Integer offset;
@@ -37,11 +41,14 @@ public class GetCharacterByFilterEndpointResponse {
     @Setter
     @NoArgsConstructor
     @AllArgsConstructor
+    @Builder
+    @EqualsAndHashCode
     @ToString
     public static class CharacterEndpointResponse {
         private UUID id;
         private String name;
         private String description;
+        private String image;
     }
 }
 

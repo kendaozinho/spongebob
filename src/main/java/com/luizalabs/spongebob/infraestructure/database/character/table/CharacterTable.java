@@ -1,12 +1,20 @@
 package com.luizalabs.spongebob.infraestructure.database.character.table;
 
 import com.luizalabs.spongebob.domain.entity.Character;
+import lombok.*;
 
 import javax.persistence.*;
 import java.io.Serializable;
 import java.time.LocalDateTime;
 import java.util.UUID;
 
+@Getter
+@Setter
+@NoArgsConstructor
+@AllArgsConstructor
+@Builder
+@EqualsAndHashCode
+@ToString
 @Entity
 @Table(name = "character")
 public class CharacterTable implements Serializable {
@@ -21,39 +29,14 @@ public class CharacterTable implements Serializable {
     @Column(name = "description")
     private String description;
 
+    @Column(name = "image")
+    private String image;
+
     @Column(name = "created_at", nullable = false, updatable = false)
     private LocalDateTime createdAt;
 
     @Column(name = "updated_at")
     private LocalDateTime updatedAt;
-
-    public CharacterTable() {
-    }
-
-    public CharacterTable(String name, String description) {
-        this.name = name;
-        this.description = description;
-    }
-
-    public UUID getId() {
-        return this.id;
-    }
-
-    public String getName() {
-        return this.name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public String getCharacter() {
-        return this.description;
-    }
-
-    public void setCharacter(String description) {
-        this.description = description;
-    }
 
     @PrePersist
     private void setCreatedAt() {
@@ -66,6 +49,6 @@ public class CharacterTable implements Serializable {
     }
 
     public Character toEntity() {
-        return new Character(this.getId(), this.getName(), this.getCharacter());
+        return new Character(this.getId(), this.getName(), this.getDescription(), this.getImage());
     }
 }
