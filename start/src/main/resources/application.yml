@@ -1,3 +1,7 @@
+application:
+  env: ${APPLICATION_ENV:DEVELOPMENT}
+  jwt:
+    secret-key: ${APPLICATION_JWT_SECRET_KEY:11111111-2222-3333-4444-555555555555}
 spring:
   datasource:
     url: jdbc:${SPRING_DATASOURCE_ID:postgresql}://${SPRING_DATASOURCE_HOST:localhost}:${SPRING_DATASOURCE_PORT:5432}/${SPRING_DATASOURCE_DATABASE:spongebob}
@@ -15,10 +19,6 @@ spring:
     user: ${SPRING_DATASOURCE_USERNAME:usr_spongebob}
     password: ${SPRING_DATASOURCE_PASSWORD:12345}
     baseline-on-migrate: true
-  application:
-    env: ${SPRING_APPLICATION_ENV:DEVELOPMENT}
-    jwt:
-      secret-key: ${SPRING_APPLICATION_JWT_SECRET_KEY:11111111-2222-3333-4444-555555555555}
 logging:
   level:
     root: ${LOGGING_LEVEL_ROOT:INFO}

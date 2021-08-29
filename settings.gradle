@@ -1,2 +1,2 @@
 // rootProject.name = 'spongebob'
-include 'application', 'configuration', 'domain', 'entrypoint', 'infraestructure', 'util'
+include 'start', 'application', 'configuration', 'domain', 'entrypoint', 'infraestructure', 'util'

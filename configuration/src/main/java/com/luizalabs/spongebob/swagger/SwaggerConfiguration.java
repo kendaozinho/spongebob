@@ -23,8 +23,8 @@ public class SwaggerConfiguration {
     private final ApplicationContext context;
 
     public SwaggerConfiguration(
-            @Value("${spring.application.jwt.secret-key}") UUID jwtSecretKey,
-            @Value("${spring.application.env}") Environment env,
+            @Value("${application.jwt.secret-key}") UUID jwtSecretKey,
+            @Value("${application.env}") Environment env,
             ApplicationContext context
     ) {
         this.jwtSecretKey = jwtSecretKey;

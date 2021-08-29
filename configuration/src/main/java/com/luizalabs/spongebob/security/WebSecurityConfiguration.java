@@ -22,7 +22,7 @@ public class WebSecurityConfiguration extends WebSecurityConfigurerAdapter {
     private final ObjectMapper mapper;
 
     public WebSecurityConfiguration(
-            @Value("${spring.application.jwt.secret-key}") UUID jwtSecretKey,
+            @Value("${application.jwt.secret-key}") UUID jwtSecretKey,
             ObjectMapper mapper
     ) {
         this.jwtSecretKey = jwtSecretKey;
